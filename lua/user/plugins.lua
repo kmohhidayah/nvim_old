@@ -99,13 +99,28 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-
+	-- markdown-preview
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-
-	-- Automatically set up your configuration after cloning packer.nvim
+  -- VimWiki
+  use {
+    'vimwiki/vimwiki',
+    config = function()
+        vim.g.vimwiki_list = {
+            {
+                path = '/home/kmohhidayah/Documents/vimwiki',
+                syntax = 'markdown',
+                ext = '.md',
+            }
+        }
+    end
+}
+  -- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
-	if PACKER_BOOTSTRAP then
+  -- Calender
+  use "itchyny/calendar.vim"
+  if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 end)
