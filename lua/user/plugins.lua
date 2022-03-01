@@ -59,20 +59,11 @@ return packer.startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
 
+  -- Colorizer
+  use 'norcalli/nvim-colorizer.lua'
 	-- Colorschemes
-	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	-- use "lunarvim/darkplus.nvim"
-	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
-		tag = "v1.*",
-		config = function()
-			vim.cmd("colorscheme rose-pine")
-		end,
-	})
-	--	use("ellisonleao/gruvbox.nvim")
-	--	use("folke/tokyonight.nvim")
-	-- cmp plugins
+  use 'eddyekofo94/gruvbox-flat.nvim'
+  -- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
@@ -103,24 +94,24 @@ return packer.startup(function(use)
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-  -- VimWiki
+  -- calendar
+  use "itchyny/calendar.vim"
+  -- OrgMode
+  use {'nvim-orgmode/orgmode'}
+  -- Automatically set up your configuration after cloning packer.nvim
   use {
     'vimwiki/vimwiki',
     config = function()
         vim.g.vimwiki_list = {
             {
-                path = '/home/kmohhidayah/Documents/vimwiki',
-                syntax = 'markdown',
-                ext = '.md',
+              path = '/home/kmohhidayah/Documents/vimwiki',
             }
         }
     end
-}
-  -- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
+  }
+  -- Put this at the end after all plugins
   -- Calender
-  use "itchyny/calendar.vim"
-  if PACKER_BOOTSTRAP then
+    if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 end)
