@@ -99,18 +99,40 @@ return packer.startup(function(use)
   -- OrgMode
   use {'nvim-orgmode/orgmode'}
   -- Automatically set up your configuration after cloning packer.nvim
-  use {
-    'vimwiki/vimwiki',
-    config = function()
-        vim.g.vimwiki_list = {
-            {
-              path = '/home/kmohhidayah/Documents/vimwiki',
+   use {
+     "nvim-neorg/neorg",
+     config = function()
+         require('neorg').setup {
+           load = {
+             ["core.defaults"] = {},
+          ["core.presenter"] = {
+            config = {
+              zen_mode = "truezen"
             }
-        }
-    end
-  }
-  -- Put this at the end after all plugins
+          },
+             ["core.norg.concealer"] = {
+                config = {}
+           },
+             ["core.norg.dirman"] = {
+             config = {
+                 workspaces = {
+                     work = "~/Documents/notes/work",
+                     home = "~/Documents/notes/home",
+                 }
+             }
+         }
+           }
+       }
+     end,
+    require = "nvim-lua/plenary.nvim"
+   }
+  use ("jbyuki/nabla.nvim")
+  use ("Pocco81/TrueZen.nvim")
+  use ("ellisonleao/glow.nvim")
+  use ("junegunn/goyo.vim")
+  use ("preservim/vim-pencil")
   -- Calender
+  -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
