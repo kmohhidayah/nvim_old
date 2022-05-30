@@ -59,11 +59,11 @@ return packer.startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
 
-  -- Colorizer
-  use 'norcalli/nvim-colorizer.lua'
-	-- Colorschemes
-  use 'eddyekofo94/gruvbox-flat.nvim'
-  -- cmp plugins
+	--  -- Colorizer
+	use("norcalli/nvim-colorizer.lua")
+	-- -- Colorschemes
+	use("eddyekofo94/gruvbox-flat.nvim")
+	--  -- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
@@ -94,46 +94,62 @@ return packer.startup(function(use)
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-  -- calendar
-  use "itchyny/calendar.vim"
-  -- OrgMode
-  use {'nvim-orgmode/orgmode'}
-  -- Automatically set up your configuration after cloning packer.nvim
-   use {
-     "nvim-neorg/neorg",
-     config = function()
-         require('neorg').setup {
-           load = {
-             ["core.defaults"] = {},
-          ["core.presenter"] = {
-            config = {
-              zen_mode = "truezen"
-            }
-          },
-             ["core.norg.concealer"] = {
-                config = {}
-           },
-             ["core.norg.dirman"] = {
-             config = {
-                 workspaces = {
-                     work = "~/Documents/notes/work",
-                     home = "~/Documents/notes/home",
-                 }
-             }
-         }
-           }
-       }
-     end,
-    require = "nvim-lua/plenary.nvim"
-   }
-  use ("jbyuki/nabla.nvim")
-  use ("Pocco81/TrueZen.nvim")
-  use ("ellisonleao/glow.nvim")
-  use ("junegunn/goyo.vim")
-  use ("preservim/vim-pencil")
-  -- Calender
-  -- Put this at the end after all plugins
-    if PACKER_BOOTSTRAP then
+	-- calendar
+	--use "itchyny/calendar.vim"
+	-- OrgMode
+	use({ "nvim-orgmode/orgmode" })
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Neorg
+	use({
+		"nvim-neorg/neorg",
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {},
+					["core.export.markdown"] = {},
+					["core.presenter"] = {
+						config = {
+							zen_mode = "truezen",
+						},
+					},
+					["core.norg.concealer"] = {
+						config = {},
+					},
+					["core.norg.dirman"] = {
+						config = {
+							workspaces = {
+								work = "~/Documents/notes/work",
+								home = "~/Documents/notes/home",
+							},
+						},
+					},
+				},
+			})
+		end,
+		require = "nvim-lua/plenary.nvim",
+	})
+	use({
+		"vimwiki/vimwiki",
+		config = function()
+			vim.g.vimwiki_list = {
+				{
+					path = "/home/kmohhidayah/Documents/vimwiki",
+					syntax = "markdown",
+					ext = ".md",
+				},
+			}
+		end,
+	})
+	use("jbyuki/nabla.nvim")
+	use("Pocco81/TrueZen.nvim")
+	use("ellisonleao/glow.nvim")
+	use("junegunn/goyo.vim")
+	use("preservim/vim-pencil")
+	use ("rcarriga/nvim-notify")
+	use("github/copilot.vim")
+	-- Calender
+	-- Put this at the end after all plugins
+	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 end)
