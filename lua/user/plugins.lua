@@ -146,7 +146,15 @@ return packer.startup(function(use)
 	use("junegunn/goyo.vim")
 	use("preservim/vim-pencil")
 	use ("rcarriga/nvim-notify")
-	use("github/copilot.vim")
+	-- use("github/copilot.vim")
+  use({
+    "NTBBloodbath/rest.nvim",
+    requires={ "nvim-lua/plenary.nvim" },
+  })
+  use("weirongxu/plantuml-previewer.vim")
+  use("tyru/open-browser.vim")
+  use("aklt/plantuml-syntax")
+  use("voldikss/vim-translator")
 	-- Calender
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
