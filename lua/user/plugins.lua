@@ -62,7 +62,7 @@ return packer.startup(function(use)
 	--  -- Colorizer
 	use("norcalli/nvim-colorizer.lua")
 	-- -- Colorschemes
-	use("eddyekofo94/gruvbox-flat.nvim")
+  use("navarasu/onedark.nvim")
 	--  -- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
@@ -155,6 +155,8 @@ return packer.startup(function(use)
   use("tyru/open-browser.vim")
   use("aklt/plantuml-syntax")
   use("voldikss/vim-translator")
+  use("dhruvasagar/vim-table-mode")
+  use("jbyuki/venn.nvim")
 	-- Calender
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
