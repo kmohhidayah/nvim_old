@@ -14,8 +14,8 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('orgmode').setup({
-  org_agenda_files = {'~/Documents/org/*'},
-  org_default_notes_file = '~/Documents/org/refile.org',
+  org_agenda_files = {'~/Notesdir/org/*'},
+  org_default_notes_file = '~/Notesdir/org/refile.org',
   mappings = {
     global = {
       org_agenda = 'gA',

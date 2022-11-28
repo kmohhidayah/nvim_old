@@ -113,7 +113,8 @@ local mappings = {
 		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame Current Line" },
+    L = { "<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>", "Toggle Blame"},
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
@@ -133,33 +134,26 @@ local mappings = {
 
 	L = {
 		name = "LSP",
-		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		d = {
-			"<cmd>Telescope lsp_document_diagnostics<cr>",
-			"Document Diagnostics",
-		},
-		w = {
-			"<cmd>Telescope lsp_workspace_diagnostics<cr>",
-			"Workspace Diagnostics",
-		},
-		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+		a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 		j = {
-			"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+			"<cmd>Lspsaga diagnostic_jump_next<CR>",
 			"Next Diagnostic",
 		},
 		k = {
-			"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+			"<cmd>Lspsaga diagnostic_jump_prev<CR>",
 			"Prev Diagnostic",
 		},
-		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		l = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Line Diagnostics" },
+    f = { "<cmd>Lspsaga lsp_finder<CR>", "finder implementation"},
+		o = { "<cmd>LSoutlineToggle<CR>", "Outline" },
+    h = { "<cmd>Lspsaga hover_doc<CR>", "Hover Doc"},
+		r = { "<cmd>Lspsaga rename<CR>", "Rename" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-			"Workspace Symbols",
+			"workspace Symbols",
 		},
 	},
 	S = {

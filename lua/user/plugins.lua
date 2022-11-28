@@ -79,8 +79,8 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-
+	--[[ use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters ]]
+  use({ "glepnir/lspsaga.nvim", branch = "main" })
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 
@@ -89,51 +89,54 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+
+  --use {'nvim-orgmode/orgmode', config = function()
+    --      require('orgmode').setup{}
+  --end
+  --}
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- markdown-preview
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 	-- calendar
-	--use "itchyny/calendar.vim"
+	 use "itchyny/calendar.vim"
 	-- OrgMode
-	use({ "nvim-orgmode/orgmode" })
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Neorg
-	use({
-		"nvim-neorg/neorg",
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {},
-					["core.export.markdown"] = {},
-					["core.presenter"] = {
-						config = {
-							zen_mode = "truezen",
-						},
-					},
-					["core.norg.concealer"] = {
-						config = {},
-					},
-					["core.norg.dirman"] = {
-						config = {
-							workspaces = {
-								work = "~/Documents/notes/work",
-								home = "~/Documents/notes/home",
-							},
-						},
-					},
-				},
-			})
-		end,
-		require = "nvim-lua/plenary.nvim",
-	})
-	use({
+	use {
+    "nvim-neorg/neorg",
+    config = function()
+        require('neorg').setup {
+          load = {
+              ["core.defaults"] = {},
+              ["core.norg.concealer"] = {
+                  },
+                  ["core.norg.completion"] = {
+                    config = {
+                      engine = "nvim-cmp"
+                    }
+                  },
+                  ["core.norg.dirman"] = {
+                    config = {
+                      workspaces = {
+                        work = "~/Notesdir/Neorg/work",
+                        home = "~/Notesdir/Neorg/home"
+                      }
+                    }
+                  }
+                }
+        }
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  }
+
+  use({
 		"vimwiki/vimwiki",
 		config = function()
 			vim.g.vimwiki_list = {
 				{
-					path = "/home/kmohhidayah/Documents/vimwiki",
+					path = "~/Notesdir/Vimwiki/Home",
 					syntax = "markdown",
 					ext = ".md",
 				},
@@ -145,8 +148,8 @@ return packer.startup(function(use)
 	use("ellisonleao/glow.nvim")
 	use("junegunn/goyo.vim")
 	use("preservim/vim-pencil")
-	use ("rcarriga/nvim-notify")
-	-- use("github/copilot.vim")
+--	use ("rcarriga/nvim-notify")
+	use("github/copilot.vim")
   use({
     "NTBBloodbath/rest.nvim",
     requires={ "nvim-lua/plenary.nvim" },
@@ -157,6 +160,11 @@ return packer.startup(function(use)
   use("voldikss/vim-translator")
   use("dhruvasagar/vim-table-mode")
   use("jbyuki/venn.nvim")
+  use('ray-x/go.nvim')
+  use('ttibsi/pre-commit.nvim')
+  use 'mfussenegger/nvim-dap'
+  use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
+  use{'vim-test/vim-test'}
 	-- Calender
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
