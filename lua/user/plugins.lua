@@ -148,8 +148,8 @@ return packer.startup(function(use)
 	use("ellisonleao/glow.nvim")
 	use("junegunn/goyo.vim")
 	use("preservim/vim-pencil")
---	use ("rcarriga/nvim-notify")
-	use("github/copilot.vim")
+  use ("rcarriga/nvim-notify")
+	--[[ use("github/copilot.vim") ]]
   use({
     "NTBBloodbath/rest.nvim",
     requires={ "nvim-lua/plenary.nvim" },

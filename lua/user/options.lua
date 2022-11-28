@@ -35,7 +35,7 @@ local options = {
   guifont = "HackNerdFont:h20",               -- the font used in graphical neovim applications
 }
 vim.opt.shortmess:append "c"
---vim.notify = require("notify")
+vim.notify = require("notify")
 
 for k, v in pairs(options) do
   vim.opt[k] = v

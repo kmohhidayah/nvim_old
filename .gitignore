@@ -1,1 +1,6 @@
 plugin
+node_modules
+pack
+package.json
+package-lock.json
+yarn.lock
