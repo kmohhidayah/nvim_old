@@ -165,6 +165,12 @@ return packer.startup(function(use)
   use 'mfussenegger/nvim-dap'
   use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
   use{'vim-test/vim-test'}
+  use {
+    'samodostal/image.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+  }
 	-- Calender
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
